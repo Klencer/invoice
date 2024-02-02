@@ -1,0 +1,69 @@
+{% extends 'pages/index.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <head>
+
+        <title>Invoice List</title>
+    </head>
+
+    <body>
+    <div class='main-container'>
+        <div class="searchForm">
+            <form method='POST' action=''>{% csrf_token %}
+                <div class="row">
+                    <h1>List of Invoices</h1>
+                    <div class='col-sm-12'>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                {{ form.invoice_number|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-3">
+                                {{ form.name|as_crispy_field }}
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                {{ form.generate_invoice|as_crispy_field }}
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <br>
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+       <br>
+    <br>
+        <table class='table'>
+            <thead>
+            <tr>
+                <th>COUNT</th>
+                <th>INVOICE NUMBER</th>
+                <th>CUSTOMER NAME</th>
+                <th>DATE</th>
+                <th>TOTAL</th>
+                <th>UPDATE</th>
+                <th>DELETE</th>
+            </tr>
+            </thead>
+            {% for instance in queryset %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ instance.invoice_number }}</td>
+                    <td>{{ instance.name }}</td>
+                    <td>{{ instance.invoice_date }}</td>
+                    <td>{{ instance.total }}</td>
+                    <td><a href="{% url 'update_invoice' instance.id %}">Update</a></td>
+                    <td><a href="{% url 'invoice_delete' instance.id %}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    <a href="#" class="scrollToTop">Scroll To Top</a>
+
+    </div>
+    </body>
+{% endblock %}

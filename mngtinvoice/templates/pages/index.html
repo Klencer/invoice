@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+{# first crispy link#}
+<head xmlns="http://www.w3.org/1999/html">
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{#    end for crispy link#}
+
+{#    ref for logo#}
+    <link rel="icon" type="images/x-icon" href="{% static '/images/logoo.png' %}">
+
+
+     <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    {# ref for css#}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/styleee.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/table.css' %}">
+
+
+ <title>INVOICE</title>
+
+</head>
+
+<body>
+{% include 'pages/sidebar.html' %}
+{% block content %}
+{#    homepage#}
+{% endblock %}
+{#{% include 'pages/footer.html' %}#}
+
+<script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui-1.13.2/jquery-ui.js' %}"></script>
+<script src="{% static 'js/pager/paging.js' %}"></script>
+<script src="{% static 'js/jsjs.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+{#java scripts link#}
+<link href="{% static 'js/jquery-ui-1.13.2/jquery-ui.min.css' %}" rel="stylesheet">
+<link href="{% static 'js/jquery-ui-1.13.2/jquery-ui.structure.min.css' %}" rel="stylesheet">
+<link href="{% static 'js/jquery-ui-1.13.2/jquery-ui.theme.min.css' %}" rel="stylesheet">
+{#sidebar bootstrap link#}
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+
+</body>
+
+
+</html>

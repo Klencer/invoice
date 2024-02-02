@@ -1,0 +1,93 @@
+{% load static %}
+
+<body>
+<section class="sidebar">
+    <div class="nav-header">
+        <p class="logo">INVOICE</p>
+        <i class="bx bx-menu btn-menu"></i>
+    </div>
+    <ul class="nav-links">
+        <li>
+            <a href="{% url 'information_list' %}">
+                <i class='bx bxs-user-pin'></i>
+                <span class="title">Customer List</span>
+            </a>
+            <span class="tooltip">Customer List</span>
+        </li>
+        <li>
+            <a href="{% url 'invoice_list' %}">
+                <i class='bx bx-list-check'></i>
+                <span class="title">Invoice List</span>
+            </a>
+            <span class="tooltip">Invoice List</span>
+        </li>
+        <li>
+            <a href="{% url 'invoice' %}">
+                <i class='bx bx-edit-alt'></i>
+                <span class="title">Invoice Form</span>
+            </a>
+            <span class="tooltip">Invoice Form</span>
+        </li>
+
+        <li>
+            <a href="{% url 'information' %}">
+                <i class='bx bx-edit-alt'></i>
+                <span class="title">Customer Form</span>
+            </a>
+            <span class="tooltip">Customer Form</span>
+        </li>
+    </ul>
+    <div class="theme-wrapper">
+        <i class="bx bxs-moon theme-icon"></i>
+        <p>Dark Theme</p>
+        <div class="theme-btn">
+            <span class="theme-ball"></span>
+        </div>
+    </div>
+</section>
+
+<script>
+    const btn_menu = document.querySelector(".btn-menu");
+    const side_bar = document.querySelector(".sidebar");
+
+    btn_menu.addEventListener("click", function () {
+        side_bar.classList.toggle("expand");
+        changebtn();
+    });
+
+    function changebtn() {
+        if (side_bar.classList.contains("expand")) {
+            btn_menu.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else {
+            btn_menu.classList.replace("bx-menu-alt-right", "bx-menu");
+        }
+    }
+
+    const btn_theme = document.querySelector(".theme-btn");
+    const theme_ball = document.querySelector(".theme-ball");
+
+    const localData = localStorage.getItem("theme");
+
+    if (localData == null) {
+        localStorage.setItem("theme", "light");
+    }
+
+    if (localData === "dark") {
+        document.body.classList.add("dark-mode");
+        theme_ball.classList.add("dark");
+    } else if (localData === "light") {
+        document.body.classList.remove("dark-mode");
+        theme_ball.classList.remove("dark");
+    }
+
+    btn_theme.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+        theme_ball.classList.toggle("dark");
+        if (document.body.classList.contains("dark-mode")) {
+            localStorage.setItem("theme", "dark");
+        } else {
+            localStorage.setItem("theme", "light");
+        }
+    });
+</script>
+</body>
