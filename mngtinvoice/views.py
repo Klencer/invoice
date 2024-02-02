@@ -23,11 +23,6 @@ from django.contrib.auth.forms import UserCreationForm
 def index(request):
     return render(request , 'pages/home.html')
 
-
-def aboutpage(request):
-    return render(request , 'pages/aboutpage.html')
-
-
 def update_invoice(request , pk):
     queryset = Invoicemngt.objects.get(id=pk)
     form = InvoiceUpdateForm(instance=queryset)
